@@ -13,9 +13,9 @@ import (
 	"github.com/joho/godotenv"
 )
 
-type Config struct {
-	SrverPort ServerConfig
-	DBConfig  DBConfig
+type сonfig struct {
+	ServerPort     ServerConfig
+	DatabaseConfig DBConfig
 }
 
 type ServerConfig struct {
@@ -27,22 +27,22 @@ type DBConfig struct {
 }
 
 var (
-	config *Config //nolint: gochecknoglobals
+	config *сonfig //nolint: gochecknoglobals
 )
 
-func GetConfig() *Config {
+func GetConfig() *сonfig {
 	var err error
 
 	config, err = newConfig()
 	if err != nil {
-		log.Panicf("new instance config: %v", err)
+		log.Fatalf("new instance config: %v", err)
 	}
 
 	return config
 }
 
-func newConfig() (*Config, error) {
-	conf := &Config{}
+func newConfig() (*сonfig, error) {
+	conf := &сonfig{}
 
 	err := godotenv.Load()
 	if err != nil {

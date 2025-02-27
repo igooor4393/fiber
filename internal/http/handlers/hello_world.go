@@ -5,10 +5,5 @@ import (
 )
 
 func HelloWorld(c *fiber.Ctx) error {
-	err := c.SendString("Hello, World!")
-	if err != nil {
-		return err
-	}
-
-	return nil
+	return c.SendString("Hello, World!")
 }

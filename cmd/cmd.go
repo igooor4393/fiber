@@ -10,14 +10,14 @@ import (
 
 func main() {
 	cfg := config.GetConfig()
-	log.Infof("DB URL: %s", cfg.DBConfig.URL)
+	log.Infof("DB URL: %s", cfg.DatabaseConfig.URL)
 
 	app := fiber.New()
 	http.ConfigureCommonMiddlewares(app)
 	http.ConfigureRoutes(app)
 
-	err := app.Listen(cfg.SrverPort.Port)
+	err := app.Listen(cfg.ServerPort.Port)
 	if err != nil {
-		log.Panicf("start server: %v", err)
+		log.Fatalf("start server: %v", err)
 	}
 }
